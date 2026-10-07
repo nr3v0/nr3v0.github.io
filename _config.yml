@@ -1,0 +1,46 @@
+title: Revo Place
+author: Nate Revo
+description: >-
+  Technology adventures with OpenShift, Kubernetes, Linux, Windows containers
+  and the home lab. Formerly revo.place and therevoman.blogspot.com.
+url: "https://nr3v0.github.io"
+baseurl: ""
+github_username: nr3v0
+
+theme: minima
+minima:
+  social_links:
+    github: nr3v0
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# New posts get Blogger-style URLs, matching the migrated ones.
+permalink: /:year/:month/:title.html
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+header_pages:
+  - about.md
+  - tags.md
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - bin
+  - ocp
+  - .zsh_history
