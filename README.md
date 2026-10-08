@@ -1,7 +1,9 @@
 # nr3v0 blog
 
-Source for <https://nr3v0.github.io>, built by GitHub Pages with Jekyll and the
-[minima](https://github.com/jekyll/minima) theme.
+Source for <https://nr3v0.github.io>, built by GitHub Pages with Jekyll. The
+layouts in `_layouts/`, `_includes/` and `assets/css/site.css` recreate the look
+of the original revo.place Blogger theme (Awesome Inc.): the TECHNOVLOGS banner,
+white post cards and a sidebar with search, archive and labels.
 
 It brings together the posts from [Revo Place](https://www.revo.place/) and
 [Revo Tech](https://therevoman.blogspot.com/). Migrated posts keep their original

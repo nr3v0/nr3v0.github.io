@@ -1,0 +1,62 @@
+<section class="widget">
+  <h2>Search This Blog</h2>
+  <form class="search-form" action="{{ '/search/' | relative_url }}" method="get" role="search">
+    <input type="search" name="q" aria-label="Search this blog">
+    <button type="submit">Search</button>
+  </form>
+</section>
+
+<section class="widget">
+  <ul class="links">
+    <li><a href="{{ '/' | relative_url }}"><strong>Home</strong></a></li>
+    <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+    <li><a href="{{ '/tags/' | relative_url }}">Labels</a></li>
+  </ul>
+</section>
+
+<section class="widget archive">
+  <h2>Blog Archive</h2>
+  {%- assign years = site.posts | group_by_exp: "p", "p.date | date: '%Y'" -%}
+  <ul class="archive-years">
+  {%- for year in years %}
+    <li>
+      <details{% if forloop.first %} open{% endif %}>
+        <summary>{{ year.name }} <span class="count">({{ year.items.size }})</span></summary>
+        {%- assign months = year.items | group_by_exp: "p", "p.date | date: '%B'" %}
+        <ul>
+        {%- for month in months %}
+          <li>
+            <details{% if forloop.first and forloop.parentloop.first %} open{% endif %}>
+              <summary>{{ month.name }} <span class="count">({{ month.items.size }})</span></summary>
+              <ul class="archive-posts">
+              {%- for p in month.items %}
+                <li><a href="{{ p.url | relative_url }}">{{ p.title | escape }}</a></li>
+              {%- endfor %}
+              </ul>
+            </details>
+          </li>
+        {%- endfor %}
+        </ul>
+      </details>
+    </li>
+  {%- endfor %}
+  </ul>
+</section>
+
+<section class="widget">
+  <h2>Labels</h2>
+  {%- capture tag_names %}{% for tag in site.tags %}{{ tag[0] }}|{% endfor %}{% endcapture %}
+  {%- assign tag_names = tag_names | split: "|" | sort_natural %}
+  <ul class="links">
+  {%- for name in tag_names %}
+    <li><a href="{{ '/tags/' | relative_url }}#{{ name | slugify }}">{{ name }}</a> <span class="count">({{ site.tags[name].size }})</span></li>
+  {%- endfor %}
+  </ul>
+</section>
+
+<section class="widget">
+  <h2>About Me</h2>
+  <p><strong><a href="{{ '/about/' | relative_url }}">{{ site.author }}</a></strong></p>
+  <p>OpenShift, Kubernetes and home lab tinkerer.</p>
+  <p><a href="https://github.com/{{ site.github_username }}">github.com/{{ site.github_username }}</a></p>
+</section>

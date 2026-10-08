@@ -1,0 +1,12 @@
+---
+layout: page
+title: Search
+permalink: /search/
+sitemap: false
+---
+<form class="search-form search-page" action="{{ '/search/' | relative_url }}" method="get" role="search">
+  <input type="search" name="q" id="search-input" aria-label="Search this blog">
+  <button type="submit">Search</button>
+</form>
+<p id="search-status"></p>
+<ul id="search-results" class="search-results"></ul>

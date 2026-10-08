@@ -1,0 +1,14 @@
+---
+layout: default
+---
+{%- for post in site.posts %}
+<article class="post-card">
+  <div class="date-header">{{ post.date | date: "%A, %B %-d, %Y" }}</div>
+  <div class="post-inner">
+    <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h2>
+    <p class="post-summary">{{ post.content | strip_html | normalize_whitespace | truncatewords: 55 }}</p>
+    <p class="read-more"><a href="{{ post.url | relative_url }}">Read more &raquo;</a></p>
+    {%- include post-footer.html post=post %}
+  </div>
+</article>
+{%- endfor %}
